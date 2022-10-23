@@ -24,10 +24,14 @@ class TritonPythonModel:
     def execute(self, requests):
         responses = []
         for request in requests:
-            input = pb_utils.get_input_tensor_by_name(request, "input")
-            input_ids = input.as_numpy()
+            input_ids = pb_utils.get_input_tensor_by_name(request, "input_ids")
+            input_ids = input_ids.as_numpy()
             input_ids = torch.as_tensor(input_ids).long().cuda()
-            summary = self.model.generate(input_ids, num_beams=1)
+            attention_mask = pb_utils.get_input_tensor_by_name(request, "attention_mask")
+            attention_mask = attention_mask.as_numpy()
+            attention_mask = torch.as_tensor(attention_mask).long().cuda()
+            inputs = {'input_ids': input_ids, 'attention_mask': attention_mask}
+            summary = self.model.generate(**inputs, num_beams=1)
             # Convert to numpy array on cpu:
             np_summary = summary.cpu().int().detach().numpy()
             inference_response = pb_utils.InferenceResponse(
