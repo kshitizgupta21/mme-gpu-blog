@@ -1,3 +1,5 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 from transformers.utils import logging
 # set logging to ERROR and above
 logging.set_verbosity(40)
