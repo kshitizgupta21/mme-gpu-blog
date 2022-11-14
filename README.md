@@ -11,4 +11,4 @@ In this example, we will walk you through how to use NVIDIA Triton Inference Ser
     * IMPORTANT: In Notebook instance settings, within Additional Configuration, for **Volume Size in GB** specify at least **100 GB**.
     * For git repositories select the option `Clone a public git repository to this notebook instance only` and specify the Git repository URL https://github.com/kshitizgupta21/mme-gpu-blog
     
-2. Once JupyterLab is ready, launch the `mme-gpu.ipynb` notebook with `conda_python3` conda kernel and run through this notebook to learn how to host multiple NLP models on GPU behind MME endpoint.
+2. Once JupyterLab is ready, launch the **mme-gpu.ipynb** notebook with **conda_python3** conda kernel and run through this notebook to learn how to host multiple NLP models on `g5.xlarge` GPU behind MME endpoint.
