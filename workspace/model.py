@@ -31,7 +31,7 @@ class TritonPythonModel:
             attention_mask = attention_mask.as_numpy()
             attention_mask = torch.as_tensor(attention_mask).long().cuda()
             inputs = {'input_ids': input_ids, 'attention_mask': attention_mask}
-            summary = self.model.generate(**inputs, max_length=256, num_beams=1)
+            summary = self.model.generate(**inputs, max_length=128, num_beams=1)
             # Convert to numpy array on cpu:
             np_summary = summary.cpu().int().detach().numpy()
             inference_response = pb_utils.InferenceResponse(
